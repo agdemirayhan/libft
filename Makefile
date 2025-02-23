@@ -57,7 +57,7 @@ GNL_OBJS   = $(GNL_SRCS:.c=.o)
 
 # Output libraries
 LIBFT_LIB = libft.a
-GNL_LIB   = libget_next_line.a
+GNL_LIB   = get_next_line.a
 
 .PHONY: all clean fclean re
 
