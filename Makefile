@@ -10,7 +10,6 @@ RM      = rm -f
 # Directories
 LIBFT_DIR = libft
 GNL_DIR   = get_next_line
-MLX_DIR   = $(LIBFT_DIR)/minilibx
 
 # Manually listed libft source files
 LIBFT_SRCS = $(LIBFT_DIR)/ft_isalpha.c \
@@ -48,22 +47,21 @@ LIBFT_SRCS = $(LIBFT_DIR)/ft_isalpha.c \
 	$(LIBFT_DIR)/ft_strmapi.c \
 	$(LIBFT_DIR)/ft_striteri.c
 
-# Manually listed get_next_line source files
+# Manually listed get_next_line source files from the submodule
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
 	$(GNL_DIR)/get_next_line_utils.c
 
-# Object files
+# Corresponding object files
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 GNL_OBJS   = $(GNL_SRCS:.c=.o)
 
 # Output libraries
 LIBFT_LIB = libft.a
 GNL_LIB   = get_next_line.a
-MLX_LIB   = $(MLX_DIR)/libmlx.a
 
 .PHONY: all clean fclean re
 
-all: $(LIBFT_LIB) $(GNL_LIB) $(MLX_LIB)
+all: $(LIBFT_LIB) $(GNL_LIB)
 
 # Build libft static library
 $(LIBFT_LIB): $(LIBFT_OBJS)
@@ -72,10 +70,6 @@ $(LIBFT_LIB): $(LIBFT_OBJS)
 # Build get_next_line static library
 $(GNL_LIB): $(GNL_OBJS)
 	$(AR) $(ARFLAGS) $@ $^
-
-# Build minilibx static library
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
 
 # Compile libft source files
 $(LIBFT_DIR)/%.o: $(LIBFT_DIR)/%.c
@@ -87,9 +81,8 @@ $(GNL_DIR)/%.o: $(GNL_DIR)/%.c
 
 clean:
 	$(RM) $(LIBFT_OBJS) $(GNL_OBJS)
-	@make clean -C $(MLX_DIR)
 
 fclean: clean
-	$(RM) $(LIBFT_LIB) $(GNL_LIB) $(MLX_LIB)
+	$(RM) $(LIBFT_LIB) $(GNL_LIB)
 
 re: fclean all
