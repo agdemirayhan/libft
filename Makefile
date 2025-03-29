@@ -47,7 +47,7 @@ LIBFT_SRCS = $(LIBFT_DIR)/ft_isalpha.c \
 	$(LIBFT_DIR)/ft_strmapi.c \
 	$(LIBFT_DIR)/ft_striteri.c
 
-# Manually listed get_next_line source files
+# Manually listed get_next_line source files from the submodule
 GNL_SRCS = $(GNL_DIR)/get_next_line.c \
 	$(GNL_DIR)/get_next_line_utils.c
 
@@ -57,7 +57,7 @@ GNL_OBJS   = $(GNL_SRCS:.c=.o)
 
 # Output libraries
 LIBFT_LIB = libft.a
-GNL_LIB   = libget_next_line.a
+GNL_LIB   = get_next_line.a
 
 .PHONY: all clean fclean re
 
